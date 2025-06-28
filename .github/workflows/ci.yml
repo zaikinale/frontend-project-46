@@ -10,8 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -19,8 +18,7 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
       - name: Run tests and collect coverage
         run: npm test -- --coverage
@@ -28,22 +26,8 @@ jobs:
       - name: Lint code
         run: npm run lint -- --fix
 
-      - name: Download SonarQube Scanner
-        run: |
-          curl -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2876-linux.zip 
-          unzip sonar-scanner-cli-4.8.0.2876-linux.zip
-          echo "export PATH=$(pwd)/$(ls -d sonar-scanner-*)/bin:$PATH" >> $GITHUB_ENV
-
-      - name: Run SonarQube analysis
+      - name: Upload to SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.host.url=https://sonarcloud.io  \
-            -Dsonar.projectKey=zaikinale_frontend-project-46 \
-            -Dsonar.organization=zaikinale-github \
-            -Dsonar.sources=src \
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-            -Dsonar.testExecutionReportBuilder.class=org.sonarqube.tests.report.LCOVTestReportBuilder \
-            -Dsonar.log.level=DEBUG
