@@ -13,3 +13,11 @@ Gendiff — CLI-утилита, сравнивающая два JSON- или YAM
 
 ```bash
 npm install -g @hexlet/code
+```
+
+## Как работает?
+
+```
+
+
+```

@@ -1,4 +1,4 @@
-// src/parseFile.js
+// src/parses.js
 
 import fs from 'fs';
 import path from 'path';
