@@ -31,6 +31,3 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://sonarcloud.io 
-          SONAR_PROJECT_KEY: zaikinale_frontend-project-46
-          SONAR_ORGANIZATION: zaikinale-github
