@@ -1,0 +1,50 @@
+name: Hexlet CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run tests and collect coverage
+        run: npm test -- --coverage
+
+      - name: Lint code
+        run: npm run lint -- --fix
+
+      - name: Prepare for SonarQube
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          echo "Collecting coverage and preparing SonarQube analysis..."
+
+      - name: Download SonarQube scanner
+        run: |
+          curl -L https://binaries.sonarsource.com/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2876-linux.zip  --output sonar.zip
+          unzip sonar.zip
+
+      - name: Run SonarQube analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          ./bin/sonar-scanner \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.host.url=https://sonarcloud.io  \
+            -Dsonar.projectBaseDir=$(pwd) \
+            -Dsonar.projectKey=zaikinale_frontend-project-46 \
+            -Dsonar.organization=zaikinale-github \
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
