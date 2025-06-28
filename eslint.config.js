@@ -5,7 +5,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import globals from 'globals'
 
 export default [
-  // Базовая конфигурация для всех JS файлов
+
   pluginJs.configs.recommended,
   stylistic.configs.recommended,
 
@@ -18,24 +18,22 @@ export default [
       },
     },
     rules: {
-      'no-console': ['warn'],
+      'no-console': ['off'],
       '@stylistic/semi': ['off'],
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/arrow-parens': ['error', 'always'],
     },
   },
 
-  // === Только для тестов ===
   {
     files: ['__tests__/**'],
     languageOptions: {
       globals: {
-        ...globals.jest, // ✅ Разрешаем использовать describe, test, expect и т.д.
+        ...globals.jest,
       },
     },
   },
 
-  // Игнорируемые файлы
   {
     ignores: ['dist/', 'node_modules/'],
   },

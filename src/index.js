@@ -27,6 +27,7 @@ export default function action(filepath1, filepath2) {
   })
   const result = '{\n' + lines.flat().join('\n') + '\n}'
 
+  console.log(result);
   return result;
 }
 
