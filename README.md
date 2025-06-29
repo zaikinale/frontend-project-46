@@ -17,18 +17,13 @@ npm install -g @hexlet/code
 
 ## Как работает?
 
-``` Options
-    https://asciinema.org/a/apr4jHO3mDmHQkrBOeNrdOpzU
-```
-``` Version
-    https://asciinema.org/a/CDxCF1sX7pLHiCflEqwmJriq1
-```
+Пример запуска команд: 
+[Options](https://asciinema.org/a/apr4jHO3mDmHQkrBOeNrdOpzU)
+[Version](https://asciinema.org/a/CDxCF1sX7pLHiCflEqwmJriq1)
 
-```Примеры запуска
+Примеры работы с Файлами:
+[Запуск плоских .yaml/.yml](https://asciinema.org/a/0m9lHxkZo91XNImfDXmIpkoRf)
+[Запуск плоских .json](https://asciinema.org/a/ImPrgIPEWTZJWeeJEo4zjNH4f)
 
-    Запуск .yaml и .yml
-    https://asciinema.org/a/0m9lHxkZo91XNImfDXmIpkoRf
-
-    Запуск .json
-    https://asciinema.org/a/ImPrgIPEWTZJWeeJEo4zjNH4f
-```
+[Запуск вложенных .yaml/.yml](https://asciinema.org/a/0m9lHxkZo91XNImfDXmIpkoRf)
+[Запуск вложенных.json](https://asciinema.org/a/ImPrgIPEWTZJWeeJEo4zjNH4f)

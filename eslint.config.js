@@ -22,6 +22,7 @@ export default [
       '@stylistic/semi': ['off'],
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/arrow-parens': ['error', 'always'],
+      'no-fallthrough': 'off',
     },
   },
 

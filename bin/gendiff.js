@@ -14,7 +14,7 @@ function getFullPath(filepath) {
   const filename = path.basename(filepath);
   const fixturePath = path.resolve(process.cwd(), '__fixtures__', filename);
 
-  if (path.isAbsolute(filepath)) {
+  if (fs.existsSync(filepath)) {
     return filepath;
   }
 
@@ -27,14 +27,12 @@ function getFullPath(filepath) {
 
 program
   .description('Compares two configuration files and shows a difference.')
-  .version(version, '-V, --version', 'output the version number')
+  .version(version)
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format', 'stylish')
-  .helpOption('-h, --help', 'display help for command')
   .action((filepath1, filepath2, options) => {
     const fullPath1 = getFullPath(filepath1);
     const fullPath2 = getFullPath(filepath2);
-
     const diff = genDiff(fullPath1, fullPath2, options);
     console.log(diff);
   });

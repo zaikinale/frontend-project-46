@@ -23,6 +23,22 @@ describe('gendiff', () => {
     expect(actual).toEqual(expected);
   })
 
+  test('deep JSON files', () => {
+    const expected_nested = readFileSync(getFixturePath('expected_nested.txt'), 'utf-8').trim();
+    const actual = genDiff(getFixturePath('file1_nested.json'), getFixturePath('file2_nested.json')).trim();
+
+    console.log('EXPECTED:\n', expected_nested);
+    console.log('ACTUAL:\n', actual);
+
+    expect(actual).toEqual(expected_nested);
+  });
+
+  test('deep YAML files', () => {
+    const expected_nested = readFileSync(getFixturePath('expected_nested.txt'), 'utf-8').trim();
+    const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml')).trim();
+    expect(actual).toEqual(expected_nested);
+  });
+
   test('unsupported file format', () => {
     expect(() => {
       genDiff(getFixturePath('before.txt'), getFixturePath('after.yaml'));
