@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96.29% </span>
+                <span class="strong">93.1% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/27</span>
+                <span class='fraction'>27/29</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">88.23% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>15/20</span>
+                <span class='fraction'>15/17</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.83% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/24</span>
+                <span class='fraction'>24/26</span>
             </div>
         
             
@@ -113,15 +113,21 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">74x</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
@@ -169,14 +175,17 @@
   const getIndent = (depth) =&gt; ' '.repeat(depth * indentSize - 2);
   const getBracketIndent = (depth) =&gt; ' '.repeat((depth - 1) * indentSize);
 &nbsp;
-  const formatValue = (value, depth) =&gt; {
+  const formatValue = (value, depth, isRemoved = false) =&gt; {
     if (typeof value !== 'object' || value === null) {
-      return value === null ? <span class="branch-0 cbranch-no" title="branch not covered" >'null' </span>: String(value);
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (value === null &amp;&amp; isRemoved) {
+<span class="cstat-no" title="statement not covered" >        return ' ';</span>
+      }
+      return value === null ? 'null' : String(value);
     }
 &nbsp;
     const entries = Object.entries(value);
     const lines = entries.map(
-      ([key, val]) =&gt; `${getIndent(depth + 1)}  ${key}: ${formatValue(val, depth + 1)}`,
+      ([key, val]) =&gt; `${getIndent(depth + 1)}  ${key}: ${formatValue(val, depth + 1, isRemoved)}`,
     );
 &nbsp;
     return `{\n${lines.join('\n')}\n${getBracketIndent(depth + 1)}}`;
@@ -189,16 +198,16 @@
           .map((child) =&gt; render(child, depth + 1))
           .join('\n')}\n${getBracketIndent(depth + 1)}}`;
       case 'added': {
-        const valueStr = node.value === null ? <span class="branch-0 cbranch-no" title="branch not covered" >'null' </span>: formatValue(node.value, depth);
+        const valueStr = formatValue(node.value, depth);
         return `${getIndent(depth)}+ ${node.key}: ${valueStr}`;
       }
       case 'removed': {
-        const valueStr = node.value === null ? <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>: formatValue(node.value, depth);
+        const valueStr = formatValue(node.value, depth, true);
         return `${getIndent(depth)}- ${node.key}: ${valueStr}`;
       }
       case 'modified': {
-        const oldVal = node.value1 === null ? <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>: formatValue(node.value1, depth);
-        const newVal = node.value2 === null ? 'null' : formatValue(node.value2, depth);
+        const oldVal = formatValue(node.value1, depth, true);
+        const newVal = formatValue(node.value2, depth);
         return [
           `${getIndent(depth)}- ${node.key}: ${oldVal}`,
           `${getIndent(depth)}+ ${node.key}: ${newVal}`,
@@ -220,7 +229,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-29T12:51:18.377Z
+                at 2025-06-29T13:30:04.792Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

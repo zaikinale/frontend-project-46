@@ -4,14 +4,17 @@ export default function formatStylish(tree) {
   const getIndent = (depth) => ' '.repeat(depth * indentSize - 2);
   const getBracketIndent = (depth) => ' '.repeat((depth - 1) * indentSize);
 
-  const formatValue = (value, depth) => {
+  const formatValue = (value, depth, isRemoved = false) => {
     if (typeof value !== 'object' || value === null) {
+      if (value === null && isRemoved) {
+        return '';
+      }
       return value === null ? 'null' : String(value);
     }
 
     const entries = Object.entries(value);
     const lines = entries.map(
-      ([key, val]) => `${getIndent(depth + 1)}  ${key}: ${formatValue(val, depth + 1)}`,
+      ([key, val]) => `${getIndent(depth + 1)}  ${key}: ${formatValue(val, depth + 1, isRemoved)}`,
     );
 
     return `{\n${lines.join('\n')}\n${getBracketIndent(depth + 1)}}`;
@@ -24,16 +27,16 @@ export default function formatStylish(tree) {
           .map((child) => render(child, depth + 1))
           .join('\n')}\n${getBracketIndent(depth + 1)}}`;
       case 'added': {
-        const valueStr = node.value === null ? 'null' : formatValue(node.value, depth);
+        const valueStr = formatValue(node.value, depth);
         return `${getIndent(depth)}+ ${node.key}: ${valueStr}`;
       }
       case 'removed': {
-        const valueStr = node.value === null ? '' : formatValue(node.value, depth);
+        const valueStr = formatValue(node.value, depth, true);
         return `${getIndent(depth)}- ${node.key}: ${valueStr}`;
       }
       case 'modified': {
-        const oldVal = node.value1 === null ? '' : formatValue(node.value1, depth);
-        const newVal = node.value2 === null ? 'null' : formatValue(node.value2, depth);
+        const oldVal = formatValue(node.value1, depth, true);
+        const newVal = formatValue(node.value2, depth);
         return [
           `${getIndent(depth)}- ${node.key}: ${oldVal}`,
           `${getIndent(depth)}+ ${node.key}: ${newVal}`,
