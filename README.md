@@ -18,14 +18,23 @@ npm install -g @hexlet/code
 [Options](https://asciinema.org/a/apr4jHO3mDmHQkrBOeNrdOpzU)  
 [Version](https://asciinema.org/a/CDxCF1sX7pLHiCflEqwmJriq1)
 
-Примеры работы с Файлами:  
+# Примеры работы с Файлами:  
+
+В формате stylish(asciinema)
+
 [Запуск плоских .yaml/.yml](https://asciinema.org/a/0m9lHxkZo91XNImfDXmIpkoRf)  
 [Запуск плоских .json](https://asciinema.org/a/ImPrgIPEWTZJWeeJEo4zjNH4f)
 
 [Запуск вложенных .yaml/.yml](https://asciinema.org/a/0m9lHxkZo91XNImfDXmIpkoRf)  
 [Запуск вложенных.json](https://asciinema.org/a/ImPrgIPEWTZJWeeJEo4zjNH4f)  
 
-<!-- Добавить assinema с разными форматами, как с плоскими так и с вложенными -->
+В формате plain(asciinema)
+
+[Запуск плоских .yaml/.yml](https://asciinema.org/a/e0lTMSxTjTKbjIADSzM5w0AWF)  
+[Запуск плоских .json](https://asciinema.org/a/ym6CwLQW6xls3zVCTN8x7YqoD)
+
+[Запуск вложенных .yaml/.yml](https://asciinema.org/a/UFpiKbokbEYgP2BnpcCDvxfN8)  
+[Запуск вложенных.json](https://asciinema.org/a/G6QpTRaT7fwi8fDST9fDpHwem)  
 
 
 

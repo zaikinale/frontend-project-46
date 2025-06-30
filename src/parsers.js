@@ -30,7 +30,8 @@ export default function parseFile(filePath) {
           Object.entries(obj).forEach(([key, value]) => {
             if (value === null) {
               obj[key] = '';
-            } else if (typeof value === 'object') {
+            }
+            else if (typeof value === 'object') {
               Object.keys(value).forEach(() => replaceNulls(value));
             }
           });
@@ -40,7 +41,8 @@ export default function parseFile(filePath) {
 
         const result = replaceNulls(parsed);
         return result;
-      } catch (err) {
+      }
+      catch (err) {
         throw new Error(`Failed to parse YAML file: ${err.message}`);
       }
     }
