@@ -34,7 +34,16 @@ npm install -g @hexlet/code
 [Запуск плоских .json](https://asciinema.org/a/ym6CwLQW6xls3zVCTN8x7YqoD)
 
 [Запуск вложенных .yaml/.yml](https://asciinema.org/a/UFpiKbokbEYgP2BnpcCDvxfN8)  
-[Запуск вложенных.json](https://asciinema.org/a/G6QpTRaT7fwi8fDST9fDpHwem)  
+[Запуск вложенных.json](https://asciinema.org/a/G6QpTRaT7fwi8fDST9fDpHwem) 
+
+
+В формате json(asciinema)
+
+[Запуск плоских .yaml/.yml](https://asciinema.org/a/jQ2Fw4bEPL3d6YpvWpdXKBPjh)  
+[Запуск плоских .json](https://asciinema.org/a/VGLRspFzLcyS1w14O0zA21j0J)
+
+[Запуск вложенных .yaml/.yml](https://asciinema.org/a/D9A6cfxw3phR2QZDCGEBrnaKX)  
+[Запуск вложенных.json](https://asciinema.org/a/yxpOM3sVX1KIwOTF22jzRnyS0)
 
 
 
