@@ -33,6 +33,7 @@ program
   .action((filepath1, filepath2, options) => {
     const fullPath1 = getFullPath(filepath1);
     const fullPath2 = getFullPath(filepath2);
+
     const diff = genDiff(fullPath1, fullPath2, options);
     console.log(diff);
   });

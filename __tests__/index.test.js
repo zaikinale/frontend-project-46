@@ -35,6 +35,18 @@ describe('gendiff', () => {
   //   expect(actual).toEqual(expected_nested);
   // });
 
+  test('deep JSON files (plain format)', () => {
+    const expected = readFileSync(getFixturePath('expected_plain.txt'), 'utf-8').trim();
+    const actual = genDiff(getFixturePath('file1_nested.json'), getFixturePath('file2_nested.json'), { format: 'plain' }).trim();
+    expect(actual).toEqual(expected);
+  });
+
+  // test('deep YAML files (plain format)', () => {
+  //   const expected = readFileSync(getFixturePath('expected_plain.txt'), 'utf-8').trim();
+  //   const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml'), { format: 'plain' }).trim();
+  //   expect(actual).toEqual(expected);
+  // });
+
   test('unsupported file format', () => {
     expect(() => {
       genDiff(getFixturePath('before.txt'), getFixturePath('after.yaml'));
