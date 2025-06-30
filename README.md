@@ -6,7 +6,7 @@
 
 Gendiff — CLI-утилита, сравнивающая два JSON- или YAML-файла и выводящая разницу в удобном читаемом формате.
 
-## Установка
+# Установка
 
 ```bash
 npm install -g @hexlet/code
@@ -18,7 +18,7 @@ npm install -g @hexlet/code
 [Options](https://asciinema.org/a/apr4jHO3mDmHQkrBOeNrdOpzU)  
 [Version](https://asciinema.org/a/CDxCF1sX7pLHiCflEqwmJriq1)
 
-# Примеры работы с Файлами:  
+### Примеры работы с Файлами:  
 
 В формате stylish(asciinema)
 
