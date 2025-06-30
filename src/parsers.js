@@ -29,7 +29,7 @@ export default function parseFile(filePath) {
 
           Object.entries(obj).forEach(([key, value]) => {
             if (value === null) {
-              obj[key] = '';
+              obj[key] = "";
             }
             else if (typeof value === 'object') {
               Object.keys(value).forEach(() => replaceNulls(value));
