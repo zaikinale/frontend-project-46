@@ -29,11 +29,11 @@ describe('gendiff', () => {
     expect(actual).toEqual(expected_nested);
   });
 
-  // test('deep YAML files', () => {
-  //   const expected_nested = readFileSync(getFixturePath('expected_nested.txt'), 'utf-8').trim();
-  //   const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml')).trim();
-  //   expect(actual).toEqual(expected_nested);
-  // });
+  test('deep YAML files', () => {
+    const expected_nested = readFileSync(getFixturePath('expected_nested.txt'), 'utf-8').trim();
+    const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml')).trim();
+    expect(actual).toEqual(expected_nested);
+  });
 
   test('deep JSON files (plain format)', () => {
     const expected = readFileSync(getFixturePath('expected_plain.txt'), 'utf-8').trim();
@@ -41,11 +41,11 @@ describe('gendiff', () => {
     expect(actual).toEqual(expected);
   });
 
-  // test('deep YAML files (plain format)', () => {
-  //   const expected = readFileSync(getFixturePath('expected_plain.txt'), 'utf-8').trim();
-  //   const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml'), { format: 'plain' }).trim();
-  //   expect(actual).toEqual(expected);
-  // });
+  test('deep YAML files (plain format)', () => {
+    const expected = readFileSync(getFixturePath('expected_plain.txt'), 'utf-8').trim();
+    const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml'), { format: 'plain' }).trim();
+    expect(actual).toEqual(expected);
+  });
 
   test('deep JSON files (json format)', () => {
     const expected = readFileSync(getFixturePath('expected_json.txt'), 'utf-8').trim();
@@ -54,11 +54,11 @@ describe('gendiff', () => {
     expect(actual).toEqual(expected);
   });
 
-  // test('deep YAML files (json format)', () => {
-  //   const expected = readFileSync(getFixturePath('expected_json.txt'), 'utf-8').trim();
-  //   const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml'), { format: 'json' }).trim();
-  //   expect(actual).toEqual(expected);
-  // });
+  test('deep YAML files (json format)', () => {
+    const expected = readFileSync(getFixturePath('expected_json.txt'), 'utf-8').trim();
+    const actual = genDiff(getFixturePath('file1_nested.yaml'), getFixturePath('file2_nested.yaml'), { format: 'json' }).trim();
+    expect(actual).toEqual(expected);
+  });
 
   test('unsupported file format', () => {
     expect(() => {

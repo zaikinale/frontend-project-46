@@ -21,25 +21,28 @@ export default function parseFile(filePath) {
     case '.yaml':
     case '.yml': {
       try {
-        const parsed = yaml.load(content);
+        // const parsed = yaml.load(content);
+        const parsed = yaml.load(content, { schema: yaml.FAILSAFE_SCHEMA });
 
-        // Рекурсивно заменяем все null на ''
-        const replaceNulls = (obj) => {
-          if (typeof obj !== 'object' || obj === null) return obj;
+        // // Рекурсивно заменяем все null на ''
+        // const replaceNulls = (obj) => {
+        //   if (typeof obj !== 'object' || obj === null) return obj;
 
-          Object.entries(obj).forEach(([key, value]) => {
-            if (value === null) {
-              obj[key] = '';
-            }
-            else if (typeof value === 'object') {
-              Object.keys(value).forEach(() => replaceNulls(value));
-            }
-          });
+        //   Object.entries(obj).forEach(([key, value]) => {
+        //     if (value === null) {
+        //       obj[key] = '';
+        //     }
+        //     else if (typeof value === 'object') {
+        //       Object.keys(value).forEach(() => replaceNulls(value));
+        //     }
+        //   });
 
-          return obj;
-        };
+        //   return obj;
+        // };
 
-        const result = replaceNulls(parsed);
+        // const result = replaceNulls(parsed);
+
+        const result = parsed
         return result;
       }
       catch (err) {
